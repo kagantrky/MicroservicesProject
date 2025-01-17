@@ -39,7 +39,7 @@ namespace FreeCourse.Services.Catalog
 
             services.AddSingleton<IDatabaseSettings>(sp =>
             {
-                return sp.GetRequiredService<IOptions<IDatabaseSettings>>().Value;  //getrequired bulamazsa hata fırlatır. o yüzden önemlidir.
+                return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;  //getrequired bulamazsa hata fırlatır. o yüzden önemlidir.
             });
 
             services.AddSwaggerGen(c =>
@@ -58,6 +58,7 @@ namespace FreeCourse.Services.Catalog
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FreeCourse.Services.Catalog v1"));
             }
 
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthorization();

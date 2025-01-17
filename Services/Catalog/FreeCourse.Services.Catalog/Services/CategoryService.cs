@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Services.Catalog.Services
 {
-    internal class CategoryService:ICategoryService
+    public class CategoryService:ICategoryService
     {
         //db path, which collection?
         private readonly IMongoCollection<Category> _categoryCollection;
