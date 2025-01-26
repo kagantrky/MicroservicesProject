@@ -57,6 +57,7 @@ namespace FreeCourse.IdentityServer
                 {
                     ClientName = "Asp.Net Core MVC",
                     ClientId = "WebMvcClientForUser",
+                    AllowOfflineAccess = true,
                     ClientSecrets= {new Secret("secret".Sha256())},  //şifre secret ve sha256 ile şifrelenecek
                     AllowedGrantTypes= GrantTypes.ResourceOwnerPassword,
                     AllowedScopes = //ICollection olduğu için süslü parantez
