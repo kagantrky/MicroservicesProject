@@ -65,10 +65,12 @@ namespace FreeCourse.IdentityServer
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.OfflineAccess, //refresh token elimizde varsa kullanıcı login olmasa da kullanıcı adına token alabiliriz. 
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        //refresh token elimizde varsa kullanıcı login olmasa da kullanıcı adına token alabiliriz. 
                         //yani burası aslında clientte kullanıcıya login bilgilerinin geldiği kısımdır.
                         ////Mesela normal token süresi uzatılır 60 gün yapılır 60 gün sonra kullanıcı tekrar login olur. 
                         //ya da bu şekilde bir yapı ile offline iken de token alınabilir. 
+                        IdentityServerConstants.LocalApi.ScopeName,
                         "roles"
                     }, 
                     AccessTokenLifetime = 1*60*60,
