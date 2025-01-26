@@ -4,6 +4,7 @@
 
 using IdentityServer4;
 using IdentityServer4.Models;
+using System;
 using System.Collections.Generic;
 
 namespace FreeCourse.IdentityServer
@@ -22,7 +23,10 @@ namespace FreeCourse.IdentityServer
         public static IEnumerable<IdentityResource> IdentityResources =>
                    new IdentityResource[]
                    {
-
+                       new IdentityResources.Email(),
+                       new IdentityResources.OpenId(), //sub claime karşılık geliyor.
+                       new IdentityResources.Profile(),
+                       new IdentityResource(){ Name = "roles", DisplayName="Roles", Description = "Kullanıcı rolleri", UserClaims = new []{"role"} }
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -48,6 +52,28 @@ namespace FreeCourse.IdentityServer
                         "photo_stock_fullpermission",
                         IdentityServerConstants.LocalApi.ScopeName
                     }  //ICollection olduğu için süslü parantez
+                },
+                new Client
+                {
+                    ClientName = "Asp.Net Core MVC",
+                    ClientId = "WebMvcClientForUser",
+                    ClientSecrets= {new Secret("secret".Sha256())},  //şifre secret ve sha256 ile şifrelenecek
+                    AllowedGrantTypes= GrantTypes.ResourceOwnerPassword,
+                    AllowedScopes = //ICollection olduğu için süslü parantez
+                    {
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess, //refresh token elimizde varsa kullanıcı login olmasa da kullanıcı adına token alabiliriz. 
+                        //yani burası aslında clientte kullanıcıya login bilgilerinin geldiği kısımdır.
+                        ////Mesela normal token süresi uzatılır 60 gün yapılır 60 gün sonra kullanıcı tekrar login olur. 
+                        //ya da bu şekilde bir yapı ile offline iken de token alınabilir. 
+                        "roles"
+                    }, 
+                    AccessTokenLifetime = 1*60*60,
+                    RefreshTokenExpiration = TokenExpiration.Absolute,
+                    AbsoluteRefreshTokenLifetime = (int) (DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds,
+                    RefreshTokenUsage = TokenUsage.ReUse
                 }
             };
     }
