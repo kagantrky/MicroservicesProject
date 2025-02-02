@@ -38,7 +38,7 @@ namespace FreeCourse.Services.PhotoStock.Controllers
         //içeride async kullanmadığımız için bunu async yapmadık
         public IActionResult PhotoDelete(string photoUrl)
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photo", photoUrl);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos", photoUrl);
 
             if(!System.IO.File.Exists(path))
             {

@@ -26,6 +26,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.PhotoStock", "Services\PhotoStock\FreeCourse.Services.PhotoStock\FreeCourse.Services.PhotoStock.csproj", "{EAB67BE2-E1A8-4823-A323-13DDCDE745B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{971A6468-A2E9-4744-AE72-50A89B1CFA41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Basket", "Services\Basket\FreeCourse.Services.Basket\FreeCourse.Services.Basket.csproj", "{8071E475-815A-41AD-86DD-14457D5F30A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,10 @@ Global
 		{EAB67BE2-E1A8-4823-A323-13DDCDE745B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAB67BE2-E1A8-4823-A323-13DDCDE745B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAB67BE2-E1A8-4823-A323-13DDCDE745B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8071E475-815A-41AD-86DD-14457D5F30A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8071E475-815A-41AD-86DD-14457D5F30A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8071E475-815A-41AD-86DD-14457D5F30A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8071E475-815A-41AD-86DD-14457D5F30A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,8 @@ Global
 		{0FE64140-2929-43A9-876F-D78FEAAC603F} = {93A4999B-8E8F-40BA-95DC-CB10978484F6}
 		{41392666-472F-4CBD-A1B5-EFBD33A7525C} = {C0A8CFF2-71BF-406B-AA82-57510FF739CD}
 		{EAB67BE2-E1A8-4823-A323-13DDCDE745B9} = {41392666-472F-4CBD-A1B5-EFBD33A7525C}
+		{971A6468-A2E9-4744-AE72-50A89B1CFA41} = {C0A8CFF2-71BF-406B-AA82-57510FF739CD}
+		{8071E475-815A-41AD-86DD-14457D5F30A2} = {971A6468-A2E9-4744-AE72-50A89B1CFA41}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B02E295-8D74-4202-A5C7-6D1DF15B0E4B}

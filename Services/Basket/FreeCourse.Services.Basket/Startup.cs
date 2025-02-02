@@ -1,4 +1,8 @@
+using FreeCourse.Services.Basket.Services;
+using FreeCourse.Services.Basket.Settings;
+using FreeCourse.Shared.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,13 +11,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FreeCourse.Services.PhotoStock
+namespace FreeCourse.Services.Basket
 {
     public class Startup
     {
@@ -27,23 +32,38 @@ namespace FreeCourse.Services.PhotoStock
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.Authority = Configuration["IdentityServerURL"];  //appsettingjson üzerinden alınıyor. 
                 //public key alacak gelen imzalanmış token ile kontrol edecek doğruysa devam edecek. 
-                options.Audience = "photo_stock_catalog";  //identityserver config dosyasında tanımlı isim
+                options.Audience = "resource_catalog";  //identityserver config dosyasında tanımlı isim
                 options.RequireHttpsMetadata = false;
 
             });
 
+
+            services.AddHttpContextAccessor();
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddScoped<IBasketService, BasketService>();
+            services.Configure<RedisSettings>(Configuration.GetSection("RedisSettings"));
+
+            services.AddSingleton<RedisService>(sp =>
+            {
+                var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
+                var redis = new RedisService(redisSettings.Host, redisSettings.Port);
+                redis.Connect();
+                return redis;
+            });
+
             services.AddControllers(opt =>
             {
-                opt.Filters.Add(new AuthorizeFilter());
-                //all controller have authorize attribute
+                opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FreeCourse.Services.PhotoStock", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FreeCourse.Services.Basket", Version = "v1" });
             });
         }
 
@@ -54,10 +74,9 @@ namespace FreeCourse.Services.PhotoStock
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FreeCourse.Services.PhotoStock v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FreeCourse.Services.Basket v1"));
             }
 
-            app.UseStaticFiles(); //wwwroot içindeki dosyalara public olarak dışarıdan erişebiliriz. 
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
