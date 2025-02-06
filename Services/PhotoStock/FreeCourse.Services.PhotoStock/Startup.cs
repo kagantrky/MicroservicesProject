@@ -31,7 +31,7 @@ namespace FreeCourse.Services.PhotoStock
             {
                 options.Authority = Configuration["IdentityServerURL"];  //appsettingjson üzerinden alınıyor. 
                 //public key alacak gelen imzalanmış token ile kontrol edecek doğruysa devam edecek. 
-                options.Audience = "photo_stock_catalog";  //identityserver config dosyasında tanımlı isim
+                options.Audience = "resource_photo_stock";  //identityserver config dosyasında tanımlı isim
                 options.RequireHttpsMetadata = false;
 
             });
