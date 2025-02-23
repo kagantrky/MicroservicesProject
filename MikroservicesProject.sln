@@ -30,6 +30,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{971A64
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Basket", "Services\Basket\FreeCourse.Services.Basket\FreeCourse.Services.Basket.csproj", "{8071E475-815A-41AD-86DD-14457D5F30A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{23FA8A7B-32E0-4B60-9B77-F9419E437CE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Discount", "Services\Discount\FreeCourse.Services.Discount\FreeCourse.Services.Discount.csproj", "{D04752C4-03D9-469C-9D4E-B5978DA427FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +60,10 @@ Global
 		{8071E475-815A-41AD-86DD-14457D5F30A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8071E475-815A-41AD-86DD-14457D5F30A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8071E475-815A-41AD-86DD-14457D5F30A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D04752C4-03D9-469C-9D4E-B5978DA427FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D04752C4-03D9-469C-9D4E-B5978DA427FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D04752C4-03D9-469C-9D4E-B5978DA427FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D04752C4-03D9-469C-9D4E-B5978DA427FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,8 @@ Global
 		{EAB67BE2-E1A8-4823-A323-13DDCDE745B9} = {41392666-472F-4CBD-A1B5-EFBD33A7525C}
 		{971A6468-A2E9-4744-AE72-50A89B1CFA41} = {C0A8CFF2-71BF-406B-AA82-57510FF739CD}
 		{8071E475-815A-41AD-86DD-14457D5F30A2} = {971A6468-A2E9-4744-AE72-50A89B1CFA41}
+		{23FA8A7B-32E0-4B60-9B77-F9419E437CE7} = {C0A8CFF2-71BF-406B-AA82-57510FF739CD}
+		{D04752C4-03D9-469C-9D4E-B5978DA427FD} = {23FA8A7B-32E0-4B60-9B77-F9419E437CE7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B02E295-8D74-4202-A5C7-6D1DF15B0E4B}
